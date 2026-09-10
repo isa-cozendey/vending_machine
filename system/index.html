@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mealy Vending Machine</title>
+    <title>MealyVend™ - Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <div class="dashboard-header">
+        <h1>🛠️ Dashboard de Autômatos</h1>
+        <p>Simulação Visual da Máquina de Mealy</p>
+    </div>
+
     <div class="container">
-        <!-- MÁQUINA DE VENDAS (Lado Esquerdo) -->
+        <!-- MÁQUINA DE VENDAS -->
         <div class="vending-machine">
+            <div class="machine-brand">
+                <h2>🍹 MealyVend™</h2>
+                <span>Auto-Snacks</span>
+            </div>
+
             <!-- Visor de Vidro -->
             <div class="glass-window">
                 <div class="shelf">
-                    <div class="product">🍫 P <br><span>(Cat. A)</span></div>
-                    <div class="product">🥤 Q <br><span>(Cat. A)</span></div>
+                    <div class="product">🍫 P <br><span class="cat-tag tag-a">Cat. A (30¢)</span></div>
+                    <div class="product">🥤 Q <br><span class="cat-tag tag-a">Cat. A (30¢)</span></div>
                 </div>
                 <div class="shelf">
-                    <div class="product">🔋 P <br><span>(Cat. B)</span></div>
-                    <div class="product">🎧 Q <br><span>(Cat. B)</span></div>
+                    <div class="product">🔋 P <br><span class="cat-tag tag-b">Cat. B (50¢)</span></div>
+                    <div class="product">🎧 Q <br><span class="cat-tag tag-b">Cat. B (50¢)</span></div>
                 </div>
             </div>
 
@@ -27,35 +37,44 @@
             <div class="control-panel">
                 <div class="led-display" id="display">SALDO: 0¢</div>
                 
-                <div class="coin-slot">
-                    <p>INSERIR MOEDAS</p>
-                    <button onclick="sendInput('c')">5¢ (c)</button>
-                    <button onclick="sendInput('d')">10¢ (d)</button>
-                    <button onclick="sendInput('v')">25¢ (v)</button>
+                <div class="actions-grid">
+                    <div class="panel-section">
+                        <p>🪙 INSERIR MOEDAS</p>
+                        <div class="btn-group">
+                            <button class="btn-coin" onclick="sendInput('c')">5¢</button>
+                            <button class="btn-coin" onclick="sendInput('d')">10¢</button>
+                            <button class="btn-coin" onclick="sendInput('v')">25¢</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <p>🎯 SELECIONAR</p>
+                        <div class="btn-group">
+                            <button class="btn-action" onclick="sendInput('a')">Cat. A</button>
+                            <button class="btn-action" onclick="sendInput('b')">Cat. B</button>
+                            <button class="btn-action" onclick="sendInput('p')">Prod P</button>
+                            <button class="btn-action" onclick="sendInput('q')">Prod Q</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="keypad">
-                    <p>SELECIONE</p>
-                    <button onclick="sendInput('a')">Cat. A</button>
-                    <button onclick="sendInput('b')">Cat. B</button>
-                    <button onclick="sendInput('p')">Prod P</button>
-                    <button onclick="sendInput('q')">Prod Q</button>
-                    <button class="cancel-btn" onclick="sendInput('C')">Cancelar (C)</button>
-                </div>
+                <button class="btn-cancel" onclick="sendInput('C')">🛑 Cancelar (Devolver)</button>
             </div>
 
             <!-- Gaveta de Retirada -->
             <div class="delivery-area">
-                <div id="product-drop">⬇️ Retire aqui ⬇️</div>
-                <div id="coin-return">🪙 Troco: <span>0¢</span></div>
+                <div id="product-drop" class="drop-box">⬇️ Retirada ⬇️</div>
+                <div id="coin-return" class="drop-box">🪙 Troco: <span>0¢</span></div>
             </div>
         </div>
 
-        <!-- LOG DA MÁQUINA DE MEALY (Lado Direito) -->
+        <!-- MONITOR MEALY -->
         <div class="mealy-monitor">
-            <h2>⚙️ Monitor da Máquina de Mealy</h2>
-            <div class="state-indicator">
-                Estado Atual: <span id="current-state-badge">S0</span>
+            <div class="monitor-header">
+                <h2>⚙️ Monitor de Transições</h2>
+                <div class="state-indicator">
+                    Estado Atual: <span id="current-state-badge">S0</span>
+                </div>
             </div>
             
             <div class="log-container" id="log-container">
@@ -63,10 +82,12 @@
             </div>
             
             <div class="legend">
-                <strong>Legenda (Saídas):</strong><br>
-                <code>λ</code>: Sem saída/troco<br>
-                <code>c...m</code>: Troco (5¢ a 50¢)<br>
-                <code>P / Q</code>: Liberação do produto
+                <strong>📋 Legenda (Saídas):</strong>
+                <ul>
+                    <li><code>λ</code> : Sem saída (Acúmulo)</li>
+                    <li><code>c...m</code> : Troco devolvido (5¢ a 50¢)</li>
+                    <li><code>P / Q</code> : Produto liberado!</li>
+                </ul>
             </div>
         </div>
     </div>

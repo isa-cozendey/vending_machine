@@ -1,5 +1,4 @@
-// 1. Tabela de Transições da Máquina de Mealy
-// Formato: estado_atual: { entrada: { next: estado_destino, out: saida } }
+// 1. Tabela de Transições da Máquina de Mealy (Intacta)
 const mealy = {
     'S0':  { 'c':{next:'S5',out:'0'}, 'd':{next:'S10',out:'0'}, 'v':{next:'S25',out:'0'} },
     'S5':  { 'c':{next:'S10',out:'0'}, 'd':{next:'S15',out:'0'}, 'v':{next:'S30',out:'0'}, 'C':{next:'S0',out:'c'} },
@@ -17,104 +16,87 @@ const mealy = {
     'Sfinal':{ '~':{next:'S0',out:'0'} }
 };
 
-// Dicionário de traduções para o UI
 const outputMeaning = {
     '0': 'λ', 'c': '5¢', 'd': '10¢', 'u': '15¢', 'k': '20¢', 
     'v': '25¢', 'x': '30¢', 'y': '35¢', 'z': '40¢', 'w': '45¢', 
     'm': '50¢', 'P': 'Produto P', 'Q': 'Produto Q'
 };
 
-// Variavel de estado
 let currentState = 'S0';
 
-// Elementos da interface
 const display = document.getElementById('display');
 const stateBadge = document.getElementById('current-state-badge');
 const logContainer = document.getElementById('log-container');
 const productDrop = document.getElementById('product-drop');
 const coinReturn = document.getElementById('coin-return');
 
-// Função principal disparada pelos botões
 function sendInput(input) {
     const currentStateObj = mealy[currentState];
 
-    // Verifica se a transição existe
     if (!currentStateObj || !currentStateObj[input]) {
         updateDisplay("REJEITADO (Erro)");
         setTimeout(() => updateUI_DisplayOnly(), 1000);
         return;
     }
 
-    // Pega a regra da Mealy
     const transition = currentStateObj[input];
     const previousState = currentState;
     
-    // Atualiza o estado
     currentState = transition.next;
-
-    // Registra no Log visível para o professor
     addLog(previousState, input, transition.out, currentState);
 
-    // Dispara animações e atualizações visuais
     processOutputEffects(transition.out);
     updateUI_DisplayOnly();
 
-    // Regra da transição automática EPSILON (~) do Sfinal para o S0
     if (currentState === 'Sfinal') {
         setTimeout(() => {
             const finalTrans = mealy['Sfinal']['~'];
             addLog('Sfinal', '~', finalTrans.out, finalTrans.next);
             currentState = finalTrans.next;
             updateUI_DisplayOnly();
-        }, 1500); // Aguarda 1.5s para o usuário ver que liberou o produto
+        }, 1800); 
     }
 }
 
-// Atualiza o letreiro luminoso da máquina
 function updateUI_DisplayOnly() {
     stateBadge.innerText = currentState;
 
     if (currentState.startsWith('S') && !isNaN(currentState.substring(1))) {
         display.innerText = `SALDO: ${currentState.substring(1)}¢`;
     } else if (currentState === 'ScatA') {
-        display.innerText = "CAT A - PROD?";
+        display.innerText = "CAT. A - ESCOLHA";
     } else if (currentState === 'ScatB') {
-        display.innerText = "CAT B - PROD?";
+        display.innerText = "CAT. B - ESCOLHA";
     } else if (currentState === 'Sfinal') {
-        display.innerText = "OBRIGADO!";
+        display.innerText = "MUITO OBRIGADO!";
     } else {
         display.innerText = "SALDO: 0¢";
     }
 }
 
-// Cria o texto do Log (δ(q0, entrada) -> q1, saida)
 function addLog(fromState, input, output, toState) {
     const outVisual = outputMeaning[output] || output;
     
     const entry = document.createElement('div');
     entry.className = 'log-entry';
-    // Formatando matematicamente
     entry.innerHTML = `δ(<b>${fromState}</b>, '${input}') &rarr; (<b>${toState}</b>, '${outVisual}')`;
     
     logContainer.appendChild(entry);
     logContainer.scrollTop = logContainer.scrollHeight;
 }
 
-// Dispara efeitos na gaveta da máquina de acordo com a saída
 function processOutputEffects(output) {
-    // Se a saída for um produto
     if (output === 'P' || output === 'Q') {
         productDrop.innerHTML = `🎉 ${outputMeaning[output]} ENTREGUE!`;
         productDrop.classList.add('highlight');
         setTimeout(() => {
-            productDrop.innerHTML = "⬇️ Retire aqui ⬇️";
+            productDrop.innerHTML = "⬇️ Retirada ⬇️";
             productDrop.classList.remove('highlight');
         }, 3000);
     }
     
-    // Se a saída for troco (diferente de '0' e de Produto)
     else if (output !== '0' && output !== 'P' && output !== 'Q') {
-        coinReturn.innerHTML = `🪙 Troco: <span>${outputMeaning[output]}</span>`;
+        coinReturn.innerHTML = `🪙 Troco: <strong>${outputMeaning[output]}</strong>`;
         coinReturn.classList.add('highlight');
         setTimeout(() => {
             coinReturn.innerHTML = `🪙 Troco: <span>0¢</span>`;
