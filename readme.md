@@ -143,7 +143,7 @@ A máquina aceita moedas de 5¢, 10¢ e 25¢, acumulando saldo até o limite má
   </tbody>
 </table>
 
-## Estados
+## Estados ($Q$)
 
 A máquina possui 14 estados funcionais:
 * $q_0$ ($S_{0c}$): Estado inicial (Saldo R$ 0,00).
@@ -151,3 +151,16 @@ A máquina possui 14 estados funcionais:
 * $q_{11}$ ($S_{catA}$): Categoria A selecionada (Aguardando escolha entre p ou q).
 * $q_{12}$ ($S_{catB}$): Categoria B selecionada (Aguardando escolha entre p ou q).
 * $q_{13}$ ($S_{final}$): Estado de dispensação.
+
+## Fluxo e Lógica das Transições
+
+### Cálculo do Troco Imediato
+Diferente de sistemas que liberam o troco no final, o cálculo ocorre no exato momento da mudança de categoria:
+$$\text{Troco} = \text{Saldo Acumulado} - \text{Preço da Categoria}$$
+* Exemplo em $S_{50}$ selecionando Categoria A ($30¢$):
+  $$\text{Transição}: \quad a / k \quad (\text{Entrada: } a \rightarrow \text{Cat. A} \quad \mid \quad \text{Saída: } k \rightarrow 20¢ \text{ de troco})$$
+
+### Ciclo de Vida do Atendimento
+* Depósito: O usuário envia v ($25¢$) + v ($25¢$) $\rightarrow$ O estado atual passa a ser $S_{50c}$.
+* Seleção: O usuário digita a (Cat. A) $\rightarrow$ A máquina transita para $S_{catA}$ e emite a saída k ($20¢$ de troco).
+* Entrega: O usuário escolhe p (Produto P) $\rightarrow$ A máquina transita para $S_{final}$, solta a saída P, e a transição nula.
