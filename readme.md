@@ -16,7 +16,7 @@ A máquina aceita moedas de 5¢, 10¢ e 25¢, acumulando saldo até o limite má
 ## Dicionário do Alfabeto
 
 ### Entradas
-dMoeda de 10¢Incrementa 10 centavos ao saldovMoeda de 25¢Incrementa 25 centavos ao saldoaCategoria ASeleciona produtos de R$ 0,30bCategoria BSeleciona produtos de R$ 0,50pProduto PConfirma a escolha do Produto PqProduto QConfirma a escolha do Produto QCCancelarSolicita a devolução do dinheiro acumulado
+
 <table>
   <thead>
     <tr>
@@ -32,9 +32,39 @@ dMoeda de 10¢Incrementa 10 centavos ao saldovMoeda de 25¢Incrementa 25 centavo
       <td>Incrementa 5 centavos ao saldo</td>
     </tr>
     <tr>
-      <td>B</td>
-      <td>2</td>
-      <td></td>
+      <td>d</td>
+      <td>Moeda de 10¢</td>
+      <td>Incrementa 10 centavos ao saldo</td>
+    </tr>
+    <tr>
+      <td>v</td>
+      <td>Moeda de 25¢</td>
+      <td>Incrementa 25 centavos ao saldo</td>
+    </tr>
+    <tr>
+      <td>a</td>
+      <td>Categoria A</td>
+      <td>Seleciona produtos de R$ 0,30</td>
+    </tr>
+    <tr>
+      <td>b</td>
+      <td>Categoria B</td>
+      <td>Seleciona produtos de R$ 0,50</td>
+    </tr>
+    <tr>
+      <td>p</td>
+      <td>Produto P</td>
+      <td>Confirma a escolha do Produto P</td>
+    </tr>
+    <tr>
+      <td>q</td>
+      <td>Produto Q</td>
+      <td>Confirma a escolha do Produto Q</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>Cancelar</td>
+      <td>Solicita a devolução do dinheiro acumulado</td>
     </tr>
   </tbody>
 </table>
