@@ -164,3 +164,70 @@ $$\text{Troco} = \text{Saldo Acumulado} - \text{Preço da Categoria}$$
 * Depósito: O usuário envia v ($25¢$) + v ($25¢$) $\rightarrow$ O estado atual passa a ser $S_{50c}$.
 * Seleção: O usuário digita a (Cat. A) $\rightarrow$ A máquina transita para $S_{catA}$ e emite a saída k ($20¢$ de troco).
 * Entrega: O usuário escolhe p (Produto P) $\rightarrow$ A máquina transita para $S_{final}$, solta a saída P, e a transição nula.
+
+## Testes para validação
+
+Com o arquivo .jar disponibilizado neste repositório, utilizando o JFLAP no modo input - multiple run.
+  
+<table>
+  <thead>
+    <tr>
+      <th>Entrada</th>
+      <th>Resultado esperado</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>vvap</td>
+      <td>kp_a</td>
+      <td>Depósito de 50¢ ($25+25$), escolhe A ($30¢$), recebe $20¢$ de troco (k) e libera Produto P (P).</td>
+    </tr>
+    <tr>
+      <td>vvdbq</td>
+      <td>q_b</td>
+      <td>Depósito de 50¢ ($25+25$), insere mais 10¢ (trava em 50¢), escolhe B ($50¢$, sem troco) e libera Produto Q (Q).</td>
+    </tr>
+    <tr>
+      <td>cccccccap</td>
+      <td>cp_a</td>
+      <td>Depósito de 35¢ ($7 \times 5¢$), compra Cat. A ($30¢$), recebe $5¢$ de troco (c) e libera P.  </td>
+    </tr>
+    <tr>
+      <td>ddddap</td>
+      <td>dp_a</td>
+      <td>Depósito de 40¢ ($4 \times 10¢$), compra Cat. A ($30¢$), recebe $10¢$ de troco (d) e libera P.</td>
+    </tr>
+    <tr>
+      <td>vddap</td>
+      <td>up_a</td>
+      <td>Depósito de 45¢ ($25+10+10$), compra Cat. A ($30¢$), recebe $15¢$ de troco (u) e libera P.</td>
+    </tr>
+    <tr>
+      <td>dddddC</td>
+      <td>m</td>
+      <td>Insere 50¢ ($5 \times 10¢$) e aperta Cancelar (C). Devolve exatamente $50¢$ de troco (m).</td>
+    </tr>
+    <tr>
+      <td>dC</td>
+      <td>d</td>
+      <td>Insere 10¢ e aperta Cancelar (C). Devolve $10¢$ de troco (d).</td>
+    </tr>
+  </tbody>
+</table>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
