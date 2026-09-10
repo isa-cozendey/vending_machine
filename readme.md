@@ -1,0 +1,3 @@
+# Vending Machine - Linguagens Formais e Autômatos
+
+Este repositório apresenta a modelagem e simulação de uma vending machine (máquina de vendas automáticas) utilizando o formalismo da Máquina de Mealy (Autômato Finito com Saída). O objetivo principal do projeto é demonstrar a aplicação prática da Teoria dos Autômatos na resolução de problemas do mundo real. No modelo desenvolvido, a máquina gerencia dinamicamente o acúmulo de saldo conforme a inserção de moedas, suporta produtos divididos em duas categorias de preço (R$ 0,30 e R$ 0,50) e realiza o cálculo e a devolução automática de troco ao cliente — funcionalidades que agregam complexidade e representatividade ao sistema.
