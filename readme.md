@@ -4,6 +4,8 @@ Este repositório apresenta a modelagem e simulação de uma vending machine (m�
 O objetivo principal do projeto é demonstrar a aplicação prática da Teoria dos Autômatos na resolução de problemas do mundo real. No modelo desenvolvido, a máquina gerencia dinamicamente o acúmulo de saldo conforme a inserção de moedas, suporta produtos divididos em duas categorias de preço (R$ 0,30 e R$ 0,50) e realiza o cálculo e a devolução automática de troco ao cliente — funcionalidades que agregam complexidade e representatividade ao sistema.
 A solução foi projetada no software JFLAP e espelhada em uma interface web interativa.
 
+Site de simulação: 
+
 ## Como funciona
 A máquina aceita moedas de 5¢, 10¢ e 25¢, acumulando saldo até o limite máximo de 50¢. A partir de determinado saldo, o usuário pode selecionar produtos de duas categorias ou cancelar a operação com devolução integral do valor acumulado.
 * Moedas Aceitas: $5¢$, $10¢$ e $25¢$.
