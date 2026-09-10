@@ -68,3 +68,77 @@ A máquina aceita moedas de 5¢, 10¢ e 25¢, acumulando saldo até o limite má
     </tr>
   </tbody>
 </table>
+
+### Saídas
+
+<table>
+  <thead>
+    <tr>
+      <th>Símbolo</th>
+      <th>Significado Real</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>c</td>
+      <td>Troco de 5¢</td>
+      <td>Seleção de Cat. A com 35¢ ou Cancelamento em S5​</td>
+    </tr>
+    <tr>
+      <td>d</td>
+      <td>Troco de 10¢</td>
+      <td>Seleção de Cat. A com 40¢ ou Cancelamento em S10​</td>
+    </tr>
+    <tr>
+      <td>u</td>
+      <td>Troco de 15¢</td>
+      <td>Seleção de Cat. A com 45¢ ou Cancelamento em S15​</td>
+    </tr>
+    <tr>
+      <td>k</td>
+      <td>Troco de 20¢</td>
+      <td>Seleção de Cat. A com 50¢ ou Cancelamento em S20​</td>
+    </tr>
+    <tr>
+      <td>v</td>
+      <td>Troco de 25¢</td>
+      <td>Cancelamento em S25</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>Troco de 30¢</td>
+      <td>Cancelamento em S30</td>
+    </tr>
+    <tr>
+      <td>y</td>
+      <td>Troco de 35¢</td>
+      <td>Cancelamento em S35</td>
+    </tr>
+    <tr>
+      <td>z</td>
+      <td>Troco de 40¢</td>
+      <td>Cancelamento em S40</td>
+    </tr>
+    <tr>
+      <td>w</td>
+      <td>Troco de 45¢</td>
+      <td>Cancelamento em S45</td>
+    </tr>
+    <tr>
+      <td>m</td>
+      <td>Troco de 50¢</td>
+      <td>Cancelamento em S50</td>
+    </tr>
+    <tr>
+      <td>p_a, p_b</td>
+      <td>Liberação do Produto P na categoria A ou B</td>
+      <td>Libera a trava do slot P da categoria A ou B</td>
+    </tr>
+    <tr>
+      <td>q_a, q_b</td>
+      <td>Liberação do Produto Q na categoria A ou B</td>
+      <td>Libera a trava do slot Q da categoria A ou B</td>
+    </tr>
+  </tbody>
+</table>
