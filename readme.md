@@ -142,3 +142,12 @@ A máquina aceita moedas de 5¢, 10¢ e 25¢, acumulando saldo até o limite má
     </tr>
   </tbody>
 </table>
+
+## Estados
+
+A máquina possui 14 estados funcionais:
+* $q_0$ ($S_{0c}$): Estado inicial (Saldo R$ 0,00).
+* $q_1$ a $q_{10}$ ($S_{5c}$ a $S_{50c}$): Estados de controle do saldo acumulado (passos de $5¢$).
+* $q_{11}$ ($S_{catA}$): Categoria A selecionada (Aguardando escolha entre p ou q).
+* $q_{12}$ ($S_{catB}$): Categoria B selecionada (Aguardando escolha entre p ou q).
+* $q_{13}$ ($S_{final}$): Estado de dispensação.
