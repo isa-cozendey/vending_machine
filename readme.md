@@ -170,7 +170,7 @@ $$\text{Troco} = \text{Saldo Acumulado} - \text{Preço da Categoria}$$
 
 ## Testes para validação
 
-Com o arquivo Teste_machine.jff disponibilizado neste repositório, utilizando o JFLAP no modo input - multiple run.
+Com o arquivo Teste_machine.jff disponibilizado neste repositório, utilizando o JFLAP no modo input - multiple run:
   
 <table>
   <thead>
