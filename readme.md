@@ -13,6 +13,9 @@ A máquina aceita moedas de 5¢, 10¢ e 25¢, acumulando saldo até o limite má
 * Troco Imediato: O troco é calculado e emitido na transição de seleção da categoria ($S_{saldo} \rightarrow S_{cat}$).
 * Cancelamento: A qualquer momento antes da escolha do produto, a tecla C devolve todo o saldo acumulado e retorna ao estado inicial ($S_0$).
 
+  <img width="1221" height="732" alt="image" src="https://github.com/user-attachments/assets/b76cae7a-29ba-48f0-af61-a12f57395c62" />
+
+
 ## Dicionário do Alfabeto
 
 ### Entradas
